@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: v2.0
+      author: Ishan Jain
+      dbms: mysql,h2
+      failOnError: false
+      preconditions:
+        - onFail: MARK_RAN
+      changes:
+        - insert:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: first_name
+                  value: Elon
+              - column:
+                  name: last_name
+                  value: Musk

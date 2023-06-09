@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0
+      author: Ishan Jain
+      dbms: mysql,h2
+      failOnError: false
+      preconditions:
+        - onFail: MARK_RAN
+      changes:
+        - createTable:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(36)
+                  constraints:
+                    nullable: true
+        - addAutoIncrement:
+           columnDataType: BIGINT
+           columnName: id
+           defaultOnNull: false
+           generationType: ALWAYS
+           startWith: 100
+           tableName: customer
