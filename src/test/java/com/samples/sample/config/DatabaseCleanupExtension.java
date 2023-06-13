@@ -1,24 +1,21 @@
 package com.samples.sample.config;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.event.annotation.BeforeTestExecution;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-@ActiveProfiles("it")
-@AutoConfigureMockMvc
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public abstract class BaseIntegrationTestJDBC {
-    @Autowired
-    protected JdbcTemplate jdbcTemplate;
+public class DatabaseCleanupExtension implements BeforeEachCallback {
 
-    public void beforeEach() {
+    private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public void beforeEach(final ExtensionContext extensionContext) {
+        if (jdbcTemplate == null) {
+            jdbcTemplate = SpringExtension.getApplicationContext(extensionContext).getBean(JdbcTemplate.class);
+        }
         cleanDatabase();
     }
 
