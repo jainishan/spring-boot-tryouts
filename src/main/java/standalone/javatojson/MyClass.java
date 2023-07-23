@@ -2,6 +2,9 @@ package standalone.javatojson;
 
 import lombok.Data;
 
+import java.util.List;
+import java.util.Map;
+
 @Data
 class MyClass {
     private int intValue;
@@ -17,6 +20,8 @@ class MyClass {
     private String stringValue;
     private char charValue;
     private Character characterValue;
-    private YourClass yourClass;
+    private List<YourClass> yourClass;
+    private List<SampleEnum> alphabets;
+    private Map<String, String> someMap;
     private OurClass ourClass;
 }
