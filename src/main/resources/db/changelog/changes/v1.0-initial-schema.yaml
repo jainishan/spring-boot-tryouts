@@ -2,10 +2,7 @@ databaseChangeLog:
   - changeSet:
       id: v1.0
       author: Ishan Jain
-      dbms: mysql,h2
-      failOnError: false
-      preconditions:
-        - onFail: MARK_RAN
+      dbms: mysql
       changes:
         - createTable:
             tableName: customer
@@ -26,6 +23,17 @@ databaseChangeLog:
                   type: varchar(36)
                   constraints:
                     nullable: true
+              - column:
+                  name: active
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
         - addAutoIncrement:
            columnDataType: BIGINT
            columnName: id

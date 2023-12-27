@@ -2,10 +2,7 @@ databaseChangeLog:
   - changeSet:
       id: v2.0
       author: Ishan Jain
-      dbms: mysql,h2
-      failOnError: false
-      preconditions:
-        - onFail: MARK_RAN
+      dbms: mysql
       changes:
         - insert:
             tableName: customer

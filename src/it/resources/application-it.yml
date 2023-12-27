@@ -1,0 +1,37 @@
+management:
+  metrics:
+    export:
+      influx:
+        enabled: false
+    endpoint:
+      metrics:
+        enabled: false
+spring:
+  config:
+    import: vault://
+  cloud:
+    vault:
+      enabled: true
+      scheme: http
+      host: localhost
+      authentication: TOKEN
+      token: test-root-token
+      database:
+        enabled: false
+    consul:
+      host: localhost
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        id:
+          new_generator_mappings: false
+    show-sql: false
+
+logging:
+  level:
+    org.springframework: ERROR
+    root: ERROR
