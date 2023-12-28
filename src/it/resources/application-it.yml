@@ -6,20 +6,20 @@ management:
     endpoint:
       metrics:
         enabled: false
-spring:
-  config:
-    import: vault://
-  cloud:
-    vault:
-      enabled: true
-      scheme: http
-      host: localhost
-      authentication: TOKEN
-      token: test-root-token
-      database:
-        enabled: false
-    consul:
-      host: localhost
+#spring:
+#  config:
+#    import: vault://
+#  cloud:
+#    vault:
+#      enabled: true
+#      scheme: http
+#      host: localhost
+#      authentication: TOKEN
+#      token: test-root-token
+#      database:
+#        enabled: false
+#    consul:
+#      host: localhost
 
   jpa:
     hibernate:

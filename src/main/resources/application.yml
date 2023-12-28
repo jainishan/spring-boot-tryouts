@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: springboottryouts
+#  cloud:
+#    vault:
+#      authentication: AWS_IAM
+#      config.lifecycle:
+#        enabled: true
+#        expiry-threshold: 4m
+#        min-renewal: 60s
+#      database:
+#        enabled: true
+#        role: appsdb-try-rw
+#      enabled: true
+#      fail-fast: false
+#      generic:
+#        enabled: false
+#      kv:
+#        application-name: apps/global/config,apps/tryout
+#        backend: secrets
+#        backend-version: 2
+#        enabled: true
+#        profile-separator: /
+#      port: 8200
+#      scheme: https
+  datasource:
+    url: jdbc:mysql://appsdb:3306/${DATABASE_NAME:try}?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&useLegacyDatetimeCode=false&serverTimezone=UTC
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 1
+
